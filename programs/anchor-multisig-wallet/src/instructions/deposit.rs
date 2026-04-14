@@ -9,8 +9,8 @@ pub struct Deposit<'info> {
 
     pub config: Account<'info, MultisigConfig>,
 
-    #[account(mut, seeds = [b"vault".as_ref(), config.key().as_ref()], bump = config.vault_bump , owner = system_program::ID)]
-    pub vault: UncheckedAccount<'info>,
+    #[account(mut, seeds = [b"vault".as_ref(), config.key().as_ref()], bump = config.vault_bump )]
+    pub vault: SystemAccount<'info>,
 
     pub system_program: Program<'info, System>,
 }

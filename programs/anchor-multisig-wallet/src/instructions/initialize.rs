@@ -37,7 +37,7 @@ impl<'info> Initialize<'info> {
     ) -> Result<()> {
         // just a custom setting for the threshold
         require!(threshold > 0 && threshold <= 10, ErrorCode::InvalidThresholdValue);
-        require!(others.len() >= (threshold as usize), ErrorCode::InvalidThresholdValue);
+        require!(others.len() >= (threshold as usize), ErrorCode::InvalidNumberOfOwners);
 
         self.config.set_inner(MultisigConfig {
             bump: bumps.config,

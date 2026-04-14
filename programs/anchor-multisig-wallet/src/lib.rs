@@ -26,4 +26,8 @@ pub mod anchor_multisig_wallet {
     pub fn deposit(ctx: Context<Deposit>, amount: u64) -> Result<()> {
         ctx.accounts.deposit_wallet(amount)
     }
+
+    pub fn transfer_ix(ctx: Context<Transfer>, amount: u64) -> Result<()> {
+        ctx.accounts.transfer(amount, &ctx)
+    }
 }

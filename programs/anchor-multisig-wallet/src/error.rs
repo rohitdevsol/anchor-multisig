@@ -10,4 +10,7 @@ pub enum ErrorCode {
 
     #[msg("Invalid Amount")]
     InvalidAmount,
+
+    #[msg("Invalid nuber of owners")]
+    InvalidNumberOfOwners,
 }
