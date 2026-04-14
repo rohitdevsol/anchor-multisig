@@ -16,6 +16,7 @@ pub struct Initialize<'info> {
     )]
     pub config: Account<'info, MultisigConfig>,
 
+    /// CHECK: This is a PDA vault which is constrained by seeds and owner
     #[account(
         init,
         space = 0,

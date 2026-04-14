@@ -1,6 +1,6 @@
 use std::collections::HashSet;
 
-use anchor_lang::prelude::{ program::{ invoke, invoke_signed }, system_instruction::transfer, * };
+use anchor_lang::prelude::{ program::{ invoke_signed }, system_instruction::transfer, * };
 
 use crate::{ MultisigConfig, error::ErrorCode };
 
@@ -19,6 +19,7 @@ pub struct Transfer<'info> {
     #[account(mut, seeds = [b"vault".as_ref(), config.key().as_ref()], bump = config.vault_bump )]
     pub vault: SystemAccount<'info>,
 
+    /// CHECK: Recipient can be any account, no data is read or trusted, only lamports are transferred
     pub recipient: UncheckedAccount<'info>, // send to this account
     pub system_program: Program<'info, System>,
 }
