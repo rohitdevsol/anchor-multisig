@@ -4,7 +4,9 @@ use anchor_lang::prelude::*;
 #[derive(InitSpace)]
 pub struct MultisigConfig {
     pub creator: Pubkey, // Multisig creator
-    pub bump: u8, // pda bump seed
+    pub bump: u8, // pda bump seed .. for config
+
+    pub vault_bump: u8, // bump for vault
     pub threshold: u8, // minimum number to release funds
 
     #[max_len(100)]

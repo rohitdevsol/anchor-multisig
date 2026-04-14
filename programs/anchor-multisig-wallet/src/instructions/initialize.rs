@@ -40,6 +40,7 @@ impl<'info> Initialize<'info> {
 
         self.config.set_inner(MultisigConfig {
             bump: bumps.config,
+            vault_bump: bumps.vault,
             creator: self.creator.key(),
             label: "".to_string(),
             threshold,
