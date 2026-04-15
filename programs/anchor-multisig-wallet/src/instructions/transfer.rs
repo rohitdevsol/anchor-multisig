@@ -6,12 +6,12 @@ use crate::{ MultisigConfig, error::ErrorCode };
 
 #[derive(Accounts)]
 pub struct Transfer<'info> {
-    #[account(mut)]
-    pub creator: Signer<'info>,
+    // #[account(mut)]
+    // pub creator: Signer<'info>, The creator should not be required
 
     #[account(
-        has_one = creator,
-        seeds = [b"multisig".as_ref(), creator.key().as_ref()],
+        // has_one = creator,
+        seeds = [b"multisig".as_ref(), config.creator.key().as_ref()],
         bump = config.bump
     )]
     pub config: Account<'info, MultisigConfig>,

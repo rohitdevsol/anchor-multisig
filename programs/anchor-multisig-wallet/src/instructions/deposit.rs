@@ -7,6 +7,7 @@ pub struct Deposit<'info> {
     #[account(mut)]
     pub depositor: Signer<'info>,
 
+    #[account(seeds = [b"multisig".as_ref(), config.creator.key().as_ref()], bump = config.bump)]
     pub config: Account<'info, MultisigConfig>,
 
     #[account(mut, seeds = [b"vault".as_ref(), config.key().as_ref()], bump = config.vault_bump )]
@@ -17,7 +18,6 @@ pub struct Deposit<'info> {
 
 impl<'info> Deposit<'info> {
     pub fn deposit_wallet(&mut self, amount: u64) -> Result<()> {
-        // just a custom setting for the threshold
         require!(amount > 0, ErrorCode::InvalidAmount);
 
         let ix = transfer(self.depositor.key, self.vault.key, amount);
